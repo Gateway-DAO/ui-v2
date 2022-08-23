@@ -22,11 +22,14 @@ const hasuraClient = (token?: string, userId?: string) =>
     headers: hasuraHeaders(token, userId),
   });
 
+// Public calls to Hasura
 export const hasuraPublicSDK = getSdk(hasuraClient());
 
+// Authenticated calls to Hasura
 export const hasuraAuthSDK = (token: string, userId?: string) =>
   getSdk(hasuraClient(token, userId));
 
+// Authenticated calls to Hasura with regeneration of token
 export const hasuraRefreshSDK = (
   token: string,
   refreshToken: string,
