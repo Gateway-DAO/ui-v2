@@ -6,12 +6,14 @@ import { LoadingIndicator } from '@/components/app/loading-indicator';
 import { Favicons } from '@/components/app/seo/favicons';
 import { Scripts } from '@/components/app/seo/scripts';
 import { SEOMetatags } from '@/components/app/seo/seo-metatags';
+import { usePersistLocale } from '@/components/app/use-persist-locale';
 
 type AppProps = NextAppProps & {
   Component: NextAppProps['Component'] & { auth?: boolean };
 };
 
 function MyApp({ Component, pageProps }: AppProps) {
+  usePersistLocale();
   return (
     <>
       <Head>
@@ -20,8 +22,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Favicons />
         <SEOMetatags />
       </Head>
-      <LoadingIndicator />
       <DashboardApp isAuthPage={Component.auth}>
+        <LoadingIndicator />
         <Component {...pageProps} />
       </DashboardApp>
       <Scripts />

@@ -1,0 +1,9 @@
+To import:
+  Hooks:
+    ☐ use-upload-image: pending bc of AuthProvider
+    ☐ use-protected: pending bc of AuthProvider
+    ☐ use-mint: need to fix wagmi breaking changes
+    ☐ use-nav: not reusable, move to dashboard template
+    ☐ use-snackbar: change to notistack
+    ☐ use-active-scroll: move to landing page components
+
