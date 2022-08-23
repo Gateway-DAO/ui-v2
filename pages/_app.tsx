@@ -11,7 +11,7 @@ import { usePersistLocale } from '@/components/app/use-persist-locale';
 import '@/styles/next.css';
 
 type AppProps = NextAppProps & {
-  Component: NextAppProps['Component'] & { auth?: boolean };
+  Component: NextAppProps['Component'] & ExtendComponentProps;
 };
 
 function MyApp({ Component, pageProps }: AppProps) {

@@ -62,3 +62,5 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+Home.auth = false;

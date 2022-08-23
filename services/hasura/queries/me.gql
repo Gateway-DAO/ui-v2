@@ -1,6 +1,7 @@
 query me {
   me {
     ...current_user
+    wallet
     picture {
       ...file
     }

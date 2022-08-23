@@ -1,5 +1,5 @@
 import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persister';
-import { QueryClient } from '@tanstack/react-query';
+import { QueryClient, QueryKey } from '@tanstack/react-query';
 import { persistQueryClient } from '@tanstack/react-query-persist-client';
 
 export const queryClient = new QueryClient({
@@ -13,6 +13,8 @@ export const queryClient = new QueryClient({
   },
 });
 
+const cachedKeys: string[] = ['token', 'me'];
+
 if (typeof window !== 'undefined') {
   const localStoragePersister = createSyncStoragePersister({
     storage: window.localStorage,
@@ -21,5 +23,10 @@ if (typeof window !== 'undefined') {
   persistQueryClient({
     queryClient,
     persister: localStoragePersister,
+    dehydrateOptions: {
+      shouldDehydrateQuery: ({ queryKey }) => {
+        return queryKey.some((key) => cachedKeys.includes(key as string));
+      },
+    },
   });
 }

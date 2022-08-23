@@ -6,7 +6,7 @@ import {
   SdkFunctionWrapper,
 } from '@/types/hasura.generated';
 
-export type GqlMethods = ReturnType<typeof getSdk>;
+export type HasuraSDK = ReturnType<typeof getSdk>;
 
 const hasuraHeaders = (token?: string, userId?: string) =>
   token
@@ -34,7 +34,7 @@ export const hasuraRefreshSDK = (
   token: string,
   refreshToken: string,
   userId: string | undefined,
-  saveToken: (newTokens: RefreshMutation['refresh']) => void
+  saveToken: (newTokens: NonNullable<RefreshMutation['refresh']>) => void
 ) => {
   const wrapper: SdkFunctionWrapper = async (action) => {
     try {
@@ -53,7 +53,7 @@ export const hasuraRefreshSDK = (
 
         /* Saves the token on stored user */
         const res = await action(hasuraHeaders(userId, newTokens!.token));
-        saveToken(newTokens);
+        saveToken(newTokens!);
         return res;
       }
       throw e;
