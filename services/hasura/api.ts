@@ -20,7 +20,7 @@ const hasuraClient = (token?: string, userId?: string) =>
 
 export const hasuraPublicSDK = getSdk(hasuraClient());
 
-export const hasuraSDK = (token: string, userId?: string) =>
+export const hasuraAuthSDK = (token: string, userId?: string) =>
   getSdk(hasuraClient(token, userId));
 
 export const hasuraRefreshSDK = (
