@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const { ROUTES } = require('./constants/routes');
 
 const config = {
