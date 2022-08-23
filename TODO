@@ -6,4 +6,5 @@ To import:
     ☐ use-nav: not reusable, move to dashboard template
     ☐ use-snackbar: change to notistack
     ☐ use-active-scroll: move to landing page components
-
+  Components:
+    ☐ Global Dependencies: swiper css, figure out better import strategy

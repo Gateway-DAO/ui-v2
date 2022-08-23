@@ -1,0 +1,11 @@
+#__next {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  min-height: 100%;
+  transition: .25s ease-in-out filter;
+}
+
+#__next.blur {
+  filter: blur(10px);
+}

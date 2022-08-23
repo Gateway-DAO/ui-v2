@@ -8,6 +8,8 @@ import { Scripts } from '@/components/app/seo/scripts';
 import { SEOMetatags } from '@/components/app/seo/seo-metatags';
 import { usePersistLocale } from '@/components/app/use-persist-locale';
 
+import '@/styles/next.css';
+
 type AppProps = NextAppProps & {
   Component: NextAppProps['Component'] & { auth?: boolean };
 };
