@@ -1,62 +1,13 @@
 {
-  "root": true,
-  "ignorePatterns": ["**/*"],
   "extends": [
-    "plugin:@nrwl/nx/typescript",
+    "next",
     "prettier",
-    "plugin:editorconfig/noconflict"
+    "plugin:editorconfig/noconflict",
+    "next/core-web-vitals"
   ],
   "plugins": [
-    "@nrwl/nx",
     "editorconfig",
     "eslint-plugin-import-helpers",
     "prettier"
-  ],
-  "overrides": [
-    {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {
-        "@nrwl/nx/enforce-module-boundaries": [
-          "error",
-          {
-            "enforceBuildableLibDependency": false,
-            "allow": [],
-            "depConstraints": [
-              {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
-              }
-            ]
-          }
-        ],
-        "editorconfig/indent": "off",
-        "import-helpers/order-imports": [
-          "warn",
-          {
-            "newlinesBetween": "always",
-            "groups": [
-              ["/^react$/", "/^react-(native|dom)$/", "/^next/"],
-              "module",
-              "/^@gateway//",
-              "/^@mui//",
-              ["parent", "sibling"],
-              "index"
-            ],
-            "alphabetize": { "order": "asc", "ignoreCase": false }
-          }
-        ],
-        "sort-imports": "off",
-        "prettier/prettier": "error",
-        "@typescript-eslint/no-unused-vars": [
-          "warn",
-          {
-            "argsIgnorePattern": "^_",
-            "varsIgnorePattern": "^_",
-            "caughtErrorsIgnorePattern": "^_"
-          }
-        ],
-        "@typescript-eslint/no-empty-function": ["warn"]
-      }
-    }
   ]
 }
