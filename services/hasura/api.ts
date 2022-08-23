@@ -1,6 +1,10 @@
 import { GraphQLClient } from 'graphql-request';
 
-import { getSdk, RefreshMutation, SdkFunctionWrapper } from './types.generated';
+import {
+  getSdk,
+  RefreshMutation,
+  SdkFunctionWrapper,
+} from '@/types/hasura.generated';
 
 export type GqlMethods = ReturnType<typeof getSdk>;
 

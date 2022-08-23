@@ -29,12 +29,12 @@ const config: IGraphQLConfig = {
   extensions: {
     codegen: {
       generates: {
-        // './services/cyberconnect/types.generated.ts': {
+        // './types/cyberconnect.generated.ts': {
         //  ...generateConfig,
         //  schema: process.env.NEXT_PUBLIC_CYBERCONNECT_ENDPOINT as string,
         //  documents: ['./services/cyberconnect/**/*.{graphql,gql}'],
         //},
-        './services/hasura/types.generated.ts': {
+        './types/hasura.generated.ts': {
           ...generateConfig,
           schema: {
             [`${process.env.HASURA_ENDPOINT}`]: {
@@ -43,7 +43,7 @@ const config: IGraphQLConfig = {
               },
             },
           },
-          documents: ['./services/**/*.{graphql,gql}'],
+          documents: ['./services/hasura/**/*.{graphql,gql}'],
         }
       },
     },

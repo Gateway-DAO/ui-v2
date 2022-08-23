@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "codegen": "graphql-codegen --config .graphqlrc.ts -r dotenv/config"
+    "generate": "graphql-codegen --config .graphqlrc.ts -r dotenv/config"
   },
   "dependencies": {
     "@emotion/react": "^11.10.0",
