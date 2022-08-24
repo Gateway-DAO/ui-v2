@@ -9,7 +9,7 @@ export const generateImageUrl = (id?: string) =>
     : undefined;
 
 /** Generates the url and blurred version from a File object  */
-export const useFile = (file?: PartialDeep<Files>) => {
+export const useFile = (file?: PartialDeep<Files> | null) => {
   if (!file) {
     return undefined;
   }
