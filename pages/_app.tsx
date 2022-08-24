@@ -7,11 +7,11 @@ import { Favicons } from '@/components/app/seo/favicons';
 import { Scripts } from '@/components/app/seo/scripts';
 import { SEOMetatags } from '@/components/app/seo/seo-metatags';
 import { usePersistLocale } from '@/components/app/use-persist-locale';
-
 import '@/styles/next.css';
+import { AuthPageComponent } from '@/types/next';
 
 type AppProps = NextAppProps & {
-  Component: NextAppProps['Component'] & ExtendComponentProps;
+  Component: NextAppProps['Component'] & AuthPageComponent;
 };
 
 function MyApp({ Component, pageProps }: AppProps) {
