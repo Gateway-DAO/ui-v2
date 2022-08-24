@@ -32,9 +32,16 @@ export function AuthProvider({
   /* SSR Fix  */
   const [isBlocked, setBlocked] = useState(!!isAuthPage);
   useEffect(() => {
-    const isStillBlocked = !!(isAuthPage && !me);
-    if (isStillBlocked && isBlocked !== isStillBlocked) {
-      setBlocked(true);
+    if (!isAuthPage && isBlocked) {
+      setBlocked(false);
+    }
+    if (isAuthPage) {
+      if (!!me && isBlocked) {
+        setBlocked(false);
+      }
+      if (!me && !isBlocked) {
+        setBlocked(true);
+      }
     }
   }, [isBlocked, isAuthPage, me]);
 
@@ -65,7 +72,7 @@ export function AuthProvider({
         onUpdateMe,
       }}
     >
-      {isBlocked && children}
+      {!isBlocked && children}
       {status !== 'AUTHENTICATED' && (
         <WalletModal
           isOpen={status === 'CONNECTING'}
