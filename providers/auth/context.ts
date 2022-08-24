@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { createContext } from 'react';
+import { createContext, useContext } from 'react';
 
 import { HasuraSDK } from '@/services/hasura/api';
 import { SessionUser } from '@/types/session';
@@ -15,3 +15,5 @@ export const AuthContext = createContext({
   onOpenWalletModal: () => {},
   onSignOut: () => {},
 } as Context);
+
+export const useAuth = () => useContext(AuthContext);

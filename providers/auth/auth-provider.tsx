@@ -2,10 +2,16 @@ import { PropsWithChildren, useEffect } from 'react';
 
 import { useAccount } from 'wagmi';
 
+import { WalletModal } from '@/components/shared/wallet-modal';
 import useToggleContainerClass from '@/hooks/use-toggle-container-class';
 
 import { AuthContext } from './context';
-import { useMe, useAuthenticatedUser, useUserStatusRoute } from './hooks';
+import {
+  useMe,
+  useAuthenticatedUser,
+  useUserStatusRoute,
+  useCloseModal,
+} from './hooks';
 import { useAuthStatus } from './state';
 
 type Props = {
@@ -29,12 +35,14 @@ export function AuthProvider({
   const { status, onAuthenticated, onConnecting, onUnauthenticated } =
     useAuthStatus(!!me, isBlocked);
 
-  console.table({ status, address, me, isAuthPage, isBlocked });
+  // console.table({ status, address, me, isAuthPage, isBlocked });
 
   const onSignOut = () => {
     onDisconnectUser();
     onUnauthenticated();
   };
+
+  const onCloseModal = useCloseModal(isBlocked, onUnauthenticated);
 
   useAuthenticatedUser(addressStatus, address, me, onSignOut);
 
@@ -52,6 +60,13 @@ export function AuthProvider({
       }}
     >
       {!isBlocked && children}
+      {status !== 'AUTHENTICATED' && (
+        <WalletModal
+          isOpen={status === 'CONNECTING'}
+          onClose={onCloseModal}
+          onSuccess={onAuthenticated}
+        />
+      )}
     </AuthContext.Provider>
   );
 }

@@ -183,3 +183,14 @@ export function useUserStatusRoute(
     }
   }, [me, router, status]);
 }
+
+// Detects if unauthenticated user is in a authenticated page. If so, redirects to Landing page
+export function useCloseModal(isUserBlocked: boolean, onClose: () => void) {
+  const router = useRouter();
+  const onCloseWhenBlocked = async () => {
+    await router.replace(ROUTES.LANDING);
+    onClose();
+  };
+
+  return isUserBlocked ? onCloseWhenBlocked : onClose;
+}
