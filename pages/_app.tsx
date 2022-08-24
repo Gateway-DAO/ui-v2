@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Gateway</title>
+        <title>GatewayDAO</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Favicons />
         <SEOMetatags />
