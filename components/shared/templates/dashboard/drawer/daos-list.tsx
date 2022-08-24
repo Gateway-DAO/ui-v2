@@ -1,17 +1,15 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
 import { PartialDeep } from 'type-fest';
 
 import { AdminBadge } from '@/components/shared/admin-badge';
 import { AvatarFile } from '@/components/shared/avatar-file';
-import { MotionTooltip } from '@/components/shared/motion/motion';
 import { ROUTES } from '@/constants/routes';
 import { useAuth } from '@/providers/auth';
 import { Daos } from '@/types/hasura.generated';
 
-import { ListItemButton, ListItemIcon } from '@mui/material';
+import { ListItemButton, ListItemIcon, Tooltip } from '@mui/material';
 
 import { DashboardTemplateProps } from '../types';
 
@@ -32,11 +30,7 @@ export default function DaosList({ currentDao }: Props) {
 
         return (
           <Link key={dao.id} passHref href={url} prefetch={false}>
-            <MotionTooltip
-              layoutId={dao.id}
-              title={dao.name!}
-              placement="right"
-            >
+            <Tooltip title={dao.name!} placement="right">
               <ListItemButton
                 component="a"
                 aria-label={`Go to ${dao.name}`}
@@ -50,7 +44,7 @@ export default function DaosList({ currentDao }: Props) {
                   </AdminBadge>
                 </ListItemIcon>
               </ListItemButton>
-            </MotionTooltip>
+            </Tooltip>
           </Link>
         );
       })}

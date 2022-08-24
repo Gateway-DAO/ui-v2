@@ -30,8 +30,6 @@ export default function Explore({
     initialData: exploreProps,
   });
 
-  console.log('rerender');
-
   if (!data) return null;
 
   return (

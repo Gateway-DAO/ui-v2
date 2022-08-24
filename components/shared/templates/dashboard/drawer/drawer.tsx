@@ -2,14 +2,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { PropsWithChildren } from 'react';
 
-import { AnimatePresence } from 'framer-motion';
-
 import { GatewayIcon } from '@/components/shared/icons/gateway';
-import { MotionTooltip } from '@/components/shared/motion/motion';
 import { ROUTES } from '@/constants/routes';
 
 import ExploreIcon from '@mui/icons-material/Explore';
-import { Avatar, ListItemButton, ListItemIcon } from '@mui/material';
+import { Avatar, ListItemButton, ListItemIcon, Tooltip } from '@mui/material';
 
 import { DashboardTemplateProps } from '../types';
 import { DaosListContainer } from './daos-list-container';
@@ -36,30 +33,27 @@ export function Drawer({ showExplore, children }: PropsWithChildren<Props>) {
           >
             <GatewayIcon />
           </ListItemIcon>
-          <AnimatePresence>
-            {showExplore && (
-              <Link passHref href={ROUTES.EXPLORE} prefetch={false}>
-                <MotionTooltip
-                  key="explore"
-                  layoutId="Explore"
-                  title="Explore"
-                  placement="right"
-                  className={
-                    router.pathname === ROUTES.EXPLORE ? 'active' : undefined
-                  }
-                >
-                  <ListItemButton component="a">
-                    <ListItemIcon>
-                      <Avatar>
-                        <ExploreIcon />
-                      </Avatar>
-                    </ListItemIcon>
-                  </ListItemButton>
-                </MotionTooltip>
-              </Link>
-            )}
-            {children}
-          </AnimatePresence>
+          {showExplore && (
+            <Link passHref href={ROUTES.EXPLORE} prefetch={false}>
+              <Tooltip
+                key="explore"
+                title="Explore"
+                placement="right"
+                className={
+                  router.pathname === ROUTES.EXPLORE ? 'active' : undefined
+                }
+              >
+                <ListItemButton component="a">
+                  <ListItemIcon>
+                    <Avatar>
+                      <ExploreIcon />
+                    </Avatar>
+                  </ListItemIcon>
+                </ListItemButton>
+              </Tooltip>
+            </Link>
+          )}
+          {children}
         </DaosListContainer>
       </ResponsiveDrawer>
     </DrawerContainer>
