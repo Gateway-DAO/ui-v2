@@ -21,6 +21,8 @@ const generateConfig = {
       defaultValue: true,
     },
     fetcher: 'graphql-request',
+    // maybeValue: 'T',
+    skipTypename: true
   },
 };
 
