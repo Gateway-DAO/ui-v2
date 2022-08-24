@@ -1,4 +1,4 @@
-import { PropsWithChildren, useEffect } from 'react';
+import { PropsWithChildren, useEffect, useState } from 'react';
 
 import { useAccount } from 'wagmi';
 
@@ -29,13 +29,18 @@ export function AuthProvider({
   const { me, hasuraAuthRefreshSDK, onDisconnectUser, onUpdateMe } =
     useMe(address);
 
-  const isBlocked = !!(isAuthPage && !me);
+  /* SSR Fix  */
+  const [isBlocked, setBlocked] = useState(!!isAuthPage);
+  useEffect(() => {
+    const isStillBlocked = !!(isAuthPage && !me);
+    if (isStillBlocked && isBlocked !== isStillBlocked) {
+      setBlocked(true);
+    }
+  }, [isBlocked, isAuthPage, me]);
 
   /* Global Auth Status */
   const { status, onAuthenticated, onConnecting, onUnauthenticated } =
     useAuthStatus(!!me, isBlocked);
-
-  // console.table({ status, address, me, isAuthPage, isBlocked });
 
   const onSignOut = () => {
     onDisconnectUser();
@@ -57,9 +62,10 @@ export function AuthProvider({
         hasuraAuthSDK: hasuraAuthRefreshSDK,
         onOpenWalletModal: onConnecting,
         onSignOut,
+        onUpdateMe,
       }}
     >
-      {!isBlocked && children}
+      {isBlocked && children}
       {status !== 'AUTHENTICATED' && (
         <WalletModal
           isOpen={status === 'CONNECTING'}

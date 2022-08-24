@@ -15,6 +15,12 @@ export const useAuthStatus = (hasUser: boolean, isBlocked: boolean) => {
   }, [hasUser, status]);
 
   useEffect(() => {
+    if (hasUser && status !== 'AUTHENTICATED') {
+      setStatus('AUTHENTICATED');
+    }
+  }, [hasUser, status]);
+
+  useEffect(() => {
     if (isBlocked && status === 'UNAUTHENTICATED') {
       setStatus('CONNECTING');
     }

@@ -115,10 +115,13 @@ export function useMe(wallet?: string) {
   );
 
   const onUpdateMe = (cb: (oldMe: SessionUser) => PartialDeep<SessionUser>) =>
-    queryClient.setQueryData(['me', wallet], (oldMe?: SessionUser) => ({
-      ...oldMe,
-      ...(cb(oldMe!) as SessionUser),
-    }));
+    queryClient.setQueryData(
+      ['me', wallet],
+      (oldMe?: Partial<SessionUser>) => ({
+        ...oldMe,
+        ...(cb(oldMe! as SessionUser) as SessionUser),
+      })
+    );
 
   /* Authenticated */
   const hasuraAuthRefreshSDK = useMemo(() => {

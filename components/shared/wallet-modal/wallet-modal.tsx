@@ -27,9 +27,6 @@ type Props = {
 
 type Steps = 'SELECT_WALLET' | 'FAQ' | 'ERROR' | 'CONNECTING';
 
-const endpoint = process.env.NEXT_PUBLIC_HASURA_ENDPOINT;
-console.log(endpoint);
-
 export function WalletModal({ isOpen, onSuccess, onClose }: Props) {
   const [step, setStep] = useState<Steps>('SELECT_WALLET');
   const onBack = () => setStep('SELECT_WALLET');

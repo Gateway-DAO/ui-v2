@@ -16,6 +16,7 @@ type AppProps = NextAppProps & {
 
 function MyApp({ Component, pageProps }: AppProps) {
   usePersistLocale();
+
   return (
     <>
       <Head>

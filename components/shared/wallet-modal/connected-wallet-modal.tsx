@@ -43,12 +43,6 @@ export function ConnectedWallet({
   };
 
   useEffect(() => {
-    if (step === 'FINISHED') {
-      onSuccess();
-    }
-  }, [onSuccess, step]);
-
-  useEffect(() => {
     if (error && !isError) {
       onError();
     }
@@ -87,24 +81,7 @@ export function ConnectedWallet({
           }}
         >
           <Box sx={{ position: 'relative' }}>
-            <AnimatePresence>
-              {step === 'GET_ACCOUNT' && (
-                <AnimatedMessage key="account">Loading account</AnimatedMessage>
-              )}
-              {step === 'GET_NONCE' && (
-                <AnimatedMessage key="nonce">
-                  Checking if you is you
-                </AnimatedMessage>
-              )}
-              {step === 'GET_SIGNATURE' && (
-                <AnimatedMessage key="sign">
-                  Waiting for signature
-                </AnimatedMessage>
-              )}
-              {step === 'GET_TOKEN' && (
-                <AnimatedMessage key="login">Validating wallet</AnimatedMessage>
-              )}
-            </AnimatePresence>
+            <AnimatedMessages step={step as string} />
           </Box>
         </Box>
       )}
@@ -116,7 +93,7 @@ export function ConnectedWallet({
             >
               Success
             </DialogContentText>
-            <Button onClick={onSuccess}>Close</Button>
+            {/* <Button onClick={onSuccess}>Close</Button> */}
           </DialogContent>
         </>
       )}
@@ -138,5 +115,23 @@ export function ConnectedWallet({
         </>
       )}
     </Box>
+  );
+}
+function AnimatedMessages({ step }: { step: string }) {
+  return (
+    <AnimatePresence>
+      {step === 'GET_ACCOUNT' && (
+        <AnimatedMessage key="account">Loading account</AnimatedMessage>
+      )}
+      {step === 'GET_NONCE' && (
+        <AnimatedMessage key="nonce">Checking if you is you</AnimatedMessage>
+      )}
+      {step === 'GET_SIGNATURE' && (
+        <AnimatedMessage key="sign">Waiting for signature</AnimatedMessage>
+      )}
+      {step === 'GET_TOKEN' && (
+        <AnimatedMessage key="login">Validating wallet</AnimatedMessage>
+      )}
+    </AnimatePresence>
   );
 }
