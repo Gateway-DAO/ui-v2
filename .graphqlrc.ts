@@ -1,6 +1,7 @@
 import { IGraphQLConfig } from 'graphql-config';
+import fs from "fs";
 
-require('dotenv').config();
+require('dotenv').config(process.env.NODE_ENV !== 'production' && fs.existsSync('./.env.local') ? { path: './.env.local' } : undefined);
 
 const generateConfig = {
   plugins: [
