@@ -4,18 +4,18 @@ import { useEffect, useRef, useState } from 'react';
 
 import { useIntersection } from 'react-use';
 
-import { Featured } from '@/components/landing/featured';
+import { Featured } from '@/components/landing/featured/featured';
 import { FeaturedProps } from '@/components/landing/featured/types';
-import { Footer } from '@/components/landing/footer';
+import { Footer } from '@/components/landing/footer/footer';
 import { FooterProps } from '@/components/landing/footer/types';
-import { Hero } from '@/components/landing/hero';
+import { Hero } from '@/components/landing/hero/hero';
 import { Investors } from '@/components/landing/investors/investors';
 import { InvestorProps } from '@/components/landing/investors/types';
 import { Menu } from '@/components/landing/menu/menu';
 import { MenuListItem, Refs } from '@/components/landing/menu/types';
-import { ProductShow } from '@/components/landing/product-show';
+import { ProductShow } from '@/components/landing/product-show/product-show';
 import { ProductShowProps } from '@/components/landing/product-show/types';
-import { ScheduleDemo } from '@/components/landing/schedule-demo';
+import { ScheduleDemo } from '@/components/landing/schedule-demo/schedule-demo';
 import { ScheduleDemoProps } from '@/components/landing/schedule-demo/types';
 import { DEFAULT_PADDINGX } from '@/components/landing/styles';
 import { useAuth } from '@/providers/auth/context';
