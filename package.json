@@ -28,9 +28,11 @@
     "graphql-request": "^4.3.0",
     "next": "12.2.5",
     "next-translate": "^1.5.0",
+    "notistack": "^2.0.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-use": "^17.4.0",
+    "swiper": "^8.3.2",
     "type-fest": "^2.19.0",
     "use-breakpoint": "^3.0.3",
     "wagmi": "^0.6.4"

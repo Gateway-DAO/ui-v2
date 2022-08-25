@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react';
 
 import { QueryClientProvider } from '@tanstack/react-query';
+import { SnackbarProvider } from 'notistack';
 import { WagmiConfig } from 'wagmi';
 
 import { AuthProvider } from '@/providers/auth/auth-provider';
@@ -20,7 +21,9 @@ export function DashboardApp({
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <WagmiConfig client={web3client}>
-          <AuthProvider isAuthPage={isAuthPage}>{children}</AuthProvider>
+          <AuthProvider isAuthPage={isAuthPage}>
+            <SnackbarProvider maxSnack={3}>{children}</SnackbarProvider>
+          </AuthProvider>
         </WagmiConfig>
       </ThemeProvider>
     </QueryClientProvider>
