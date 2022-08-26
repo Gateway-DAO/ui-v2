@@ -49,10 +49,14 @@
   },
   "actions": {
     "connect": "connect",
-    "disconnect": "disconnect",
+    "disconnect": "Disconnect",
     "cancel": "cancel",
     "got-it": "got it",
     "follow": "Follow",
     "unfollow": "Unfollow"
+  },
+  "clipboard": {
+    "wallet": "Copied Wallet Address to clipboard",
+    "see-profile": "View my profile"
   }
 }

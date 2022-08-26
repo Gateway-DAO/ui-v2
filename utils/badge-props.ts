@@ -6,6 +6,6 @@ export const badgeProps = (gate: PartialDeep<Gates>) =>
   gate?.image
     ? {
         src: gate.image,
-        alt: gate.title,
+        alt: gate.title!,
       }
     : undefined;

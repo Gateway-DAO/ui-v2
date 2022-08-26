@@ -62,7 +62,6 @@ query gates_tab {
     image
     dao {
       id
-      logo_url
       logo {
         ...file
       }
